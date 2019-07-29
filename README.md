@@ -8,6 +8,11 @@
 
 - Depending on your docker setup (windows docker toolbox/VM), you might need to expose the port `9092`
 
+- Check the [app config](src/main/resources/application.conf) to configure
+  - kafka endpoint
+  - topic
+  - (consumer) group-id
+
 ## Build and run
 - Main
 

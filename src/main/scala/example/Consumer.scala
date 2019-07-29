@@ -7,8 +7,17 @@ import scala.collection.JavaConverters._
 import com.typesafe.scalalogging.StrictLogging
 import org.apache.kafka.clients.consumer.KafkaConsumer
 
+/**
+ * Simple Kafka consumer
+ * @param brokerUrl
+ * @param groupId
+ */
 class Consumer(brokerUrl: String, groupId: String = "scala-test") extends StrictLogging {
 
+  /**
+   * Poll style reader
+   * @param topic
+   */
   def read(topic: String) = {
     val props = new Properties()
     props.put("bootstrap.servers", brokerUrl)

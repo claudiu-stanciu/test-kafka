@@ -5,6 +5,10 @@ import java.util.Properties
 import com.typesafe.scalalogging.StrictLogging
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
+/**
+ * Simple Kafka producer
+ * @param brokerUrl
+ */
 class Producer(brokerUrl: String) extends StrictLogging {
   val props = new Properties()
   props.put("bootstrap.servers", brokerUrl)
@@ -12,6 +16,12 @@ class Producer(brokerUrl: String) extends StrictLogging {
   props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
   val producer = new KafkaProducer[String, String](props)
 
+  /**
+   * Read from stdin and write to kafka
+   *
+   * Flush on each message
+   * @param topic
+   */
   def write(topic: String): Unit = {
     import scala.io.StdIn
     logger.info("Type to insert new message into Kafka. Exit on ^C")
