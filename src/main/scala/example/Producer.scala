@@ -14,6 +14,7 @@ class Producer(brokerUrl: String) extends StrictLogging {
 
   def write(topic: String): Unit = {
     import scala.io.StdIn
+    logger.info("Type to insert new message into Kafka. Exit on ^C")
     while (true) {
       val data = StdIn.readLine()
       val key = scala.util.Random.nextInt
